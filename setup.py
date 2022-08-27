@@ -24,5 +24,6 @@ setup(
     url='https://github.com/Genlovy-Hoo/chncal',
     license='MIT License',
     install_requires=[],
-    packages=['chncal'],
+    packages=['chncal',
+              'chncal.data'],
 )

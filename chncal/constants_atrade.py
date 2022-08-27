@@ -11578,4 +11578,7 @@ atrade_calendar = {
     datetime.date(year=2022, month=8, day=20): 0,
     datetime.date(year=2022, month=8, day=21): 0,
     datetime.date(year=2022, month=8, day=22): 1,
+    datetime.date(year=2022, month=8, day=23): 1,
+    datetime.date(year=2022, month=8, day=24): 1,
+    datetime.date(year=2022, month=8, day=25): 1,
 }
