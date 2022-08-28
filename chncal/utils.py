@@ -112,7 +112,7 @@ def _validate_date(*dates):
     return date
 
 
-def is_holiday(date):
+def is_holiday(date=None):
     '''
     check if one date is holiday in China.
     in other words, Chinese people get rest at that day.
@@ -123,7 +123,7 @@ def is_holiday(date):
     return not is_workday(date)
 
 
-def is_workday(date):
+def is_workday(date=None):
     '''
     check if one date is workday in China.
     in other words, Chinese people works at that day.
@@ -136,7 +136,7 @@ def is_workday(date):
     return bool(date in workdays.keys() or (weekday <= 4 and date not in holidays.keys()))
 
 
-def is_in_lieu(date):
+def is_in_lieu(date=None):
     '''
     check if one date is in lieu in China.
     in other words, Chinese people get rest at that day because of legal holiday.
@@ -148,7 +148,7 @@ def is_in_lieu(date):
     return date in in_lieu_days
 
 
-def get_holiday_detail(date):
+def get_holiday_detail(date=None):
     '''
     check if one date is holiday in China,
     and return the holiday name (None if it's a normal day)
@@ -166,7 +166,7 @@ def get_holiday_detail(date):
         return date.weekday() > 4, None
 
 
-def get_dates(start, end):
+def get_dates(start, end=None):
     '''
     get dates between start date and end date. (includes start date and end date)
 
@@ -179,7 +179,7 @@ def get_dates(start, end):
     return [start + datetime.timedelta(days=delta) for delta in range(delta_days + 1)]
 
 
-def get_holidays(start, end, include_weekends=True):
+def get_holidays(start, end=None, include_weekends=True):
     '''
     get holidays between start date and end date. (includes start date and end date)
 
@@ -195,7 +195,7 @@ def get_holidays(start, end, include_weekends=True):
     return list(filter(lambda x: x in holidays, get_dates(start, end)))
 
 
-def get_workdays(start, end):
+def get_workdays(start, end=None):
     '''
     get workdays between start date and end date. (includes start date and end date)
 

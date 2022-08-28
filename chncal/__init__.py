@@ -37,7 +37,7 @@ from .utils import (
     get_trade_dates
 )
 
-__version__ = '1.7.25'
+__version__ = '1.7.26'
 
 __all__ = [
     'Holiday',
