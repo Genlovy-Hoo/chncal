@@ -5,6 +5,7 @@ from __future__ import absolute_import, unicode_literals
 from .constants import Holiday
 from .constants import holidays, in_lieu_days, workdays
 from .constants_atrade import atrade_calendar
+from .constants_zodiac_marry import zodiac_match
 from .utils import (
     find_workday,
     get_dates,
@@ -25,6 +26,8 @@ from .utils import (
     get_bazi_lunar,
     fate_weight,
     fate_weight_lunar,
+    get_zodiac_match,
+    get_zodiac_match_lunar,
     get_recent_workday,
     get_next_nth_workday,
     get_work_dates,
@@ -34,7 +37,7 @@ from .utils import (
     get_trade_dates
 )
 
-__version__ = '1.7.24'
+__version__ = '1.7.25'
 
 __all__ = [
     'Holiday',
@@ -55,6 +58,9 @@ __all__ = [
     'get_bazi_lunar',
     'fate_weight',
     'fate_weight_lunar',
+    'zodiac_match',
+    'get_zodiac_match',
+    'get_zodiac_match_lunar',
     'get_holiday_detail',
     'get_solar_terms',
     'get_dates',

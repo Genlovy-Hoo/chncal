@@ -22,6 +22,7 @@ from chncal.solar_terms import SOLAR_TERMS_DELTA
 from chncal.constants_atrade import atrade_calendar
 from chncal.constants_hko import gen_lun, lun_gen, gen_gz
 from chncal.constants_fate import w_year, w_month, w_date, w_hour, song
+from chncal.constants_zodiac_marry import zodiac_match
 
 
 # # 干支纪年https://baike.baidu.com/item/干支纪年/3383226
@@ -351,6 +352,20 @@ def get_bazi_lunar(time, run=False):
     date = lun2gen(time[:10], run=run)
     time = date + time[10:]
     return get_bazi(time)
+
+
+def get_zodiac_match(time=None):
+    '''根据公历时间获取属相合婚信息'''
+    sx = gen2gz(time)[3]
+    return {sx: zodiac_match[gen2gz(time)[3]]}
+
+
+def get_zodiac_match_lunar(time, run=False):
+    '''根据农历时间获取属相合婚信息'''
+    assert isinstance(time, str) and '.' in time
+    date = lun2gen(time[:10], run=run)
+    sx = gen2gz(date)[3]
+    return {sx: zodiac_match[gen2gz(time)[3]]}
 
 
 def _hour2dz(hour):
