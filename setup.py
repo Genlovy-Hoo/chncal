@@ -8,14 +8,12 @@ if 'bdist_wheel' in sys.argv:
 else:
     from distutils.core import setup # 'python setup.py install'
 
-import chncal
-
 with open('README.md', 'r', encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
     name='chncal',
-    version=chncal.__version__,
+    version='2.0.0',
     description='Check if some day is holiday in china.',
     long_description=long_description,
     long_description_content_type='text/markdown',

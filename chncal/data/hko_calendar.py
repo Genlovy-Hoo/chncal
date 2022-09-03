@@ -194,7 +194,7 @@ def handle_hko_calendar(data, save_dir=None):
                      df['农历m'].apply(lambda x: str(x).zfill(2)) + '.' + \
                      df['农历d'].apply(lambda x: str(x).zfill(2))
     df['农历date'] = df[['农历date', '农历date_']].apply(lambda x:
-                     x['农历date']+'_' if '闰' in x['农历date_'] else x['农历date'],
+                     x['农历date']+'闰' if '闰' in x['农历date_'] else x['农历date'],
                      axis=1)
     # 公历节日
     festival = {

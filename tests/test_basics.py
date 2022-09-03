@@ -5,7 +5,8 @@ from __future__ import absolute_import, unicode_literals
 import datetime
 import unittest
 
-from chncal import Holiday, get_holiday_detail, is_holiday, is_workday
+from chncal.constants import Holiday 
+from chncal import get_holiday_detail, is_holiday, is_workday
 
 
 class BasicTests(unittest.TestCase):
