@@ -13,7 +13,7 @@ with open('README.md', 'r', encoding='utf-8') as f:
 
 setup(
     name='chncal',
-    version='2.0.1',
+    version='2.0.2',
     description='Check if some day is holiday in china.',
     long_description=long_description,
     long_description_content_type='text/markdown',
