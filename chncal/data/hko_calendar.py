@@ -22,8 +22,8 @@ from tqdm import tqdm
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
-from dramkit.other import load_text_multi
-from dramkit.other import traditional2simplified
+from dramkit.other import (load_text_multi,
+                           traditional2simplified)
 from dramkit.datetimetools import date_reformat_chn
 
 from cn2an import cn2an
@@ -312,7 +312,7 @@ if __name__ == '__main__':
     from dramkit import TimeRecoder
     tr = TimeRecoder()
     
-    download_hko_calendar()
+    download_hko_calendar(force=False)
     data = find_load_hko_calendar()
     df = handle_hko_calendar(data)
     
