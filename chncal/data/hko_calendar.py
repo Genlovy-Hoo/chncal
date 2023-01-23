@@ -268,10 +268,18 @@ def handle_hko_calendar(data, save_dir=None):
             return '射手座'
     df['星座'] = df['date'].apply(lambda x: _get_xingzuo(x[-5:]))
     # 干支纪年
-    df['干支年'] = df['农历y'].apply(_get_tgdz_year)
+    # # 按农历年份
+    # df['干支年'] = df['农历y'].apply(_get_tgdz_year)
+    # 按二十四节气（貌似属相按节气跨年才是正确的，即立春之后进入下一个属相年）
+    gz_y = df[df['节气'] == '立春'][['date', '节气']].copy()
+    gz_y['干支y'] = gz_y['date'].apply(lambda x: x[:4])
+    df = pd.merge(df, gz_y[['date', '干支y']],
+                  how='left', on='date')
+    df['干支y'] = df['干支y'].fillna(method='ffill').fillna(method='bfill')
+    df['干支年'] = df['干支y'].apply(_get_tgdz_year)
     # 干支纪月
     # 农历2018年大雪（冬月初一，公历2018.12.07）是甲子月
-    solars = df[~df['节气'].isna()][['date', '节气']]
+    solars = df[~df['节气'].isna()][['date', '节气']].copy()
     solars.loc[solars['date'] == '2018.12.07', '干支月'] = TGDZ[0]
     solars.reset_index(drop=True, inplace=True)
     i0 = solars[solars['date'] == '2018.12.07'].index[0]
@@ -295,7 +303,7 @@ def handle_hko_calendar(data, save_dir=None):
     first = df['干支月'].dropna().iloc[0]
     df['干支月'].fillna(TGDZ[TGDZ.index(first)-1], inplace=True)
     # 干支纪日
-    # 农历2018年六月十二（公历2022.07.10）是甲子日
+    # 农历2022年六月十二（公历2022.07.10）是甲子日
     datebase = pd.to_datetime('2022.07.10')
     df['干支日'] = pd.to_datetime(df['date']) - datebase
     df['干支日'] = df['干支日'].apply(lambda x: x.days)

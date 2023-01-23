@@ -10,10 +10,14 @@ else:
 
 with open('README.md', 'r', encoding='utf-8') as f:
     long_description = f.read()
+    
+__version__ = None
+with open('./chncal/__init__.py', 'r', encoding='utf-8') as f:
+    exec(f.readlines()[4].strip())
 
 setup(
     name='chncal',
-    version='2.0.3',
+    version=__version__,
     description='Check if some day is holiday in china.',
     long_description=long_description,
     long_description_content_type='text/markdown',
